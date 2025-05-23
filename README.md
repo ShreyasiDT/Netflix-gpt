@@ -1,5 +1,8 @@
 1. created react app using CRA
 2. configured tailwind css into our app
+3. build header
+4. login form
+5. sign up form
 
 #features
 
