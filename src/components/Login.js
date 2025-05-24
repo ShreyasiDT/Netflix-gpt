@@ -1,12 +1,24 @@
 import React from "react";
 import Header from "./Header";
 import ControlledCheckBox from "./CheckBox";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { checkValidData } from "../utils/validate";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const toggleSingInForm = (event) => {
     event.preventDefault();
     setIsSignInForm(!isSignInForm);
+  };
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const handleButtonClick = () => {
+    //validate my form, if the email and password is acceptable or not
+    checkValidData(email, password);
+    console.log(email);
+    console.log(password);
   };
   return (
     <div>
@@ -14,7 +26,7 @@ const Login = () => {
       <div className="absolute inset-0">
         <img
           className="w-screen h-auto object-cover"
-          src="https://i.pinimg.com/736x/19/8b/2f/198b2f01e73b905772279616eccc7c65.jpg"
+          src="https://i.pinimg.com/736x/b4/b3/7d/b4b37d0de743c3aacd6c652578b03c4e.jpg"
           alt="landing-image"
         />
       </div>
@@ -24,22 +36,28 @@ const Login = () => {
         </h1>
         {!isSignInForm && (
           <input
+            ref={name}
             type="text"
             placeholder="Name"
             className="p-4 my-4 w-full rounded-xl"
           />
         )}
         <input
+          ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-4 w-full rounded-xl"
+          className="p-4 my-4 w-full rounded-xl bg-slate-200 text-black"
         />
         <input
+          ref={password}
           type="password"
           placeholder="PassWord"
-          className="p-4 my-4 w-full rounded-xl"
+          className="p-4 my-4 w-full rounded-xl bg-slate-200 text-black"
         />
-        <button className="p-4 my-6 bg-red-700 w-full rounded-xl">
+        <button
+          className="p-4 my-6 bg-red-700 w-full rounded-xl"
+          onClick={handleButtonClick}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <ControlledCheckBox />
@@ -51,7 +69,7 @@ const Login = () => {
             className="bg-red-700 px-2 py-2 rounded-xl cursor-pointer"
             onClick={toggleSingInForm}
           >
-            {isSignInForm ? "Sign In" : "Sign Up"}
+            {isSignInForm ? "Sign In" : "Sign Up "}
           </button>
         </div>
       </form>

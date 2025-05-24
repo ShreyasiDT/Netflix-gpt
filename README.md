@@ -1,10 +1,13 @@
-1. created react app using CRA
-2. configured tailwind css into our app
-3. build header
-4. login form
-5. sign up form
+- created react app using CRA
+- configured tailwind css into our app
+- build header
+- routing
+- login form
+- sign up form
+- form validation
+- useRef hook
 
-#features
+# features
 
 - login/sign up page
   -sign in/ sign up page
